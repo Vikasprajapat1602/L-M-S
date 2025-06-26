@@ -21,4 +21,4 @@ A Django-based web application designed to help libraries manage books, students
 - Backend: Django (Python).
 - Frontend: HTML, CSS, Bootstrap.
 - Database: SQLite.
-- Tools: Git, GitHub.
+- Tools: Git, GitHub and VS code.
