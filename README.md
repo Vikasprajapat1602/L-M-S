@@ -13,12 +13,11 @@ A Django-based web application designed to help libraries manage books, students
 - 📊 Admin Dashboard.
 - 🧾 Detailed Book Issue History.
 - 🧑‍🎓 Student Portal (view issued books, return status, due dates).
-- 
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 🛠️ Tech Stack :
 
 - Backend: Django (Python).
-- Frontend: HTML, CSS,Javascropt Bootstrap.
+- Frontend: HTML, CSS, Javascropt Bootstrap.
 - Database: SQLite.
 - Tools: Git, GitHub and VS code.
