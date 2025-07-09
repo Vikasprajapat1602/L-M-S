@@ -1,4 +1,4 @@
-# 📚 Library Management System (LMS) :
+# 📚 Library Management System :
 
 A Django-based web application designed to help libraries manage books, students, and circulation activities efficiently.
 
