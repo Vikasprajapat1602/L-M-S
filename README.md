@@ -18,6 +18,6 @@ A Django-based web application designed to help libraries manage books, students
 🛠️ Tech Stack :
 
 - Backend: Django (Python).
-- Frontend: HTML, CSS, Javascropt, Bootstrap.
+- Frontend: HTML, CSS, Javascript and Bootstrap.
 - Database: SQLite.
 - Tools: Git, GitHub and VS code.
