@@ -20,4 +20,4 @@ class ReturnForm(forms.Form):
                 student_id = int(self.data.get('student'))
                 self.fields['book'].queryset = Book.objects.filter(issue__student_id=student_id, issue__is_returned=False).distinct()
             except (ValueError, TypeError):
-                pass  # invalid input — ignore and keep empty
+                pass 
