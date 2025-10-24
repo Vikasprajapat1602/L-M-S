@@ -3,13 +3,13 @@
 {% block content %}
 
 
-<h2 class="issue-page-title">📚 Issued Books List</h2>
+<h2 class="issue-page-title"> Issued Books List</h2>
 
 <!-- Tabs for filter -->
 <div class="issue-tabs">
     <button class="tab-button active" onclick="filterIssues('all')">All</button>
-    <button class="tab-button" onclick="filterIssues('returned')">✅ Returned</button>
-    <button class="tab-button" onclick="filterIssues('not-returned')">❌ Not Returned</button>
+    <button class="tab-button" onclick="filterIssues('returned')"> Returned</button>
+    <button class="tab-button" onclick="filterIssues('not-returned')"> Not Returned</button>
 </div>
 
 <table class="issued-table" id="issuedTable">
@@ -33,9 +33,9 @@
         <td>{{ issue.due_date }}</td>
         <td>
             {% if issue.is_returned %}
-                <span class="status-badge returned">✔️ Returned</span>
+                <span class="status-badge returned"> Returned</span>
             {% else %}
-                <span class="status-badge not-returned">❌ Not Returned</span>
+                <span class="status-badge not-returned"> Not Returned</span>
             {% endif %}
         </td>
     </tr>
