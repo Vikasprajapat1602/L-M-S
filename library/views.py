@@ -51,7 +51,7 @@ def return_book(request):
             student = form.cleaned_data['student']
             book = form.cleaned_data['book']
 
-            # Student + Book ke basis pe unreturned issue record dhundhna
+            # Find unreturned issue record(basis of Student + Book)
             issue = Issue.objects.filter(student=student, book=book, is_returned=False).first()
 
             if issue:
@@ -65,7 +65,7 @@ def return_book(request):
 
                 issue.save()
 
-                # Book ki available copies +1
+                # Available copies of Book +1
                 book.available_copies += 1
                 book.save()
 
@@ -93,7 +93,7 @@ def issue_list(request):
 def clear_fine(request, pk):
     issued_book = get_object_or_404(Issue, pk=pk)
 
-    # Fine ko 0 set kar rahe hain
+    # Fine start = 0
     issued_book.fine = 0
     issued_book.save()
 
@@ -117,7 +117,7 @@ class ReturnForm(forms.Form):
     def __init__(self, *args, **kwargs):
         super(ReturnForm, self).__init__(*args, **kwargs)
 
-        # Agar POST request ho to Book queryset ko filter karo student ke hisaab se
+                # Fiter book queryset according to student if request == POST
         if 'student' in self.data:
             try:
                 student_id = int(self.data.get('student'))
