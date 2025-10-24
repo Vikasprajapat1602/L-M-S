@@ -1,0 +1,62 @@
+{% extends 'library/base.html' %}
+{% block title %}Return Book{% endblock %}
+
+{% block content %}
+<div class="issue-book-wrapper">
+    <div class="issue-card">
+        <h2>Return Book</h2>
+
+        {% if message %}
+        <div style="background-color: #d4edda; color: #155724; padding: 10px; margin-bottom: 15px; border-radius: 5px;">
+            {{ message }}
+        </div>
+        {% endif %}
+
+        <form method="post">
+            {% csrf_token %}
+
+            <label for="{{ form.student.id_for_label }}">Student:</label>
+            {{ form.student }}
+
+            <label for="{{ form.book.id_for_label }}">Book:</label>
+            {{ form.book }}
+
+            <button type="submit">Return Book</button>
+        </form>
+
+        {% if book_to_return and book_to_return.fine_amount > 0 %}
+        <form method="post" action="{% url 'clear_fine' book_to_return.pk %}">
+            {% csrf_token %}
+            <button type="submit" style="background-color: #28a745; margin-top: 20px;">
+                Clear Fine (₹{{ book_to_return.fine_amount }})
+            </button>
+        </form>
+        {% endif %}
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#id_student').change(function () {
+            const studentId = $(this).val();
+
+            $.ajax({
+                url: "{% url 'get_books' %}",
+                data: {
+                    'student_id': studentId
+                },
+                dataType: 'json',
+                success: function (data) {
+                    const bookSelect = $('#id_book');
+                    bookSelect.empty();
+                    bookSelect.append('<option value="">Select Book</option>');
+                    data.books.forEach(function (item) {
+                        bookSelect.append('<option value="' + item.id + '">' + item.name + '</option>');
+                    });
+                }
+            });
+        });
+    });
+</script>
+{% endblock %}

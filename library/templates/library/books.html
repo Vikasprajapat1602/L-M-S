@@ -1,0 +1,65 @@
+{% extends 'library/base.html' %}
+
+{% block title %}Books{% endblock %}
+
+{% block content %}
+
+{% comment %} search books {% endcomment %}
+<div class="search-bar" style="width: 100%; text-align: center; margin-top: 20px;">
+    <input type="text" id="bookSearch" placeholder="Search book by title..." onkeyup="searchBooks()" />
+</div>
+
+<h2 class="page-title">Books Available in Library</h2>
+
+<div class="table-container">
+    <table class="books-table">
+        <thead>
+            <tr>
+                <th>S.No</th>
+                <th>Book Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td>1</td><td>Artificial Intelligence</td></tr>
+            <tr><td>2</td><td>Big Data Technologies</td></tr>
+            <tr><td>3</td><td>Blockchain Technology</td></tr>
+            <tr><td>4</td><td>Cloud Computing</td></tr>
+            <tr><td>5</td><td>Computer Architecture</td></tr>
+            <tr><td>6</td><td>Computer Networks</td></tr>
+            <tr><td>7</td><td>Cybersecurity Fundamentals</td></tr>
+            <tr><td>8</td><td>Data Science with Python</td></tr>
+            <tr><td>9</td><td>Data Structures</td></tr>
+            <tr><td>10</td><td>Database Management Systems</td></tr>
+            <tr><td>11</td><td>DevOps Practices</td></tr>
+            <tr><td>12</td><td>Discrete Mathematics</td></tr>
+            <tr><td>13</td><td>Game Development</td></tr>
+            <tr><td>14</td><td>Human-Computer Interaction</td></tr>
+            <tr><td>15</td><td>Internet of Things (IoT)</td></tr>
+            <tr><td>16</td><td>Introduction to Algorithms</td></tr>
+            <tr><td>17</td><td>Machine Learning</td></tr>
+            <tr><td>18</td><td>Mobile App Development</td></tr>
+            <tr><td>19</td><td>Operating Systems</td></tr>
+            <tr><td>20</td><td>Python Programming</td></tr>
+            <tr><td>21</td><td>Software Engineering</td></tr>
+            <tr><td>22</td><td>Statistics for Data Science</td></tr>
+            <tr><td>23</td><td>Web Design Principles</td></tr>
+            <tr><td>24</td><td>Web Development with Django</td></tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- JS for Search -->
+<script>
+function searchBooks() {
+    const input = document.getElementById("bookSearch");
+    const filter = input.value.toLowerCase();
+    const rows = document.querySelectorAll(".books-table tbody tr");
+
+    rows.forEach(row => {
+        const title = row.querySelector("td").innerText.toLowerCase();
+        row.style.display = title.includes(filter) ? "" : "none";
+    });
+}
+</script>
+
+{% endblock %}

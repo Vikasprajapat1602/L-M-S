@@ -1,0 +1,50 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Django stuff:
+*.log
+*.pot
+*.pyc
+db.sqlite3
+*.sqlite3
+
+# Virtual environment
+venv/
+ENV/
+env/
+.venv/
+
+# IDEs and editors
+.vscode/
+.idea/
+
+# Local settings
+.env
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Build files
+build/
+dist/
+
+# Python environment
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Coverage and test reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+
+# PyInstaller
+*.spec

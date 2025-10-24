@@ -1,0 +1,60 @@
+{% extends 'library/base.html' %}
+
+{% block content %}
+
+
+<h2 class="issue-page-title">📚 Issued Books List</h2>
+
+<!-- Tabs for filter -->
+<div class="issue-tabs">
+    <button class="tab-button active" onclick="filterIssues('all')">All</button>
+    <button class="tab-button" onclick="filterIssues('returned')">✅ Returned</button>
+    <button class="tab-button" onclick="filterIssues('not-returned')">❌ Not Returned</button>
+</div>
+
+<table class="issued-table" id="issuedTable">
+    <thead>
+        <tr>
+            <th>Issue ID</th>
+            <th>Book</th>
+            <th>Student</th>
+            <th>Issue Date</th>
+            <th>Due Date</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for issue in issues %}
+    <tr class="issue-row {% if issue.is_returned %}returned{% else %}not-returned{% endif %}">
+        <td>{{ issue.id }}</td>
+        <td>{{ issue.book.title }}</td>
+        <td>{{ issue.student.name }}</td>
+        <td>{{ issue.issue_date }}</td>
+        <td>{{ issue.due_date }}</td>
+        <td>
+            {% if issue.is_returned %}
+                <span class="status-badge returned">✔️ Returned</span>
+            {% else %}
+                <span class="status-badge not-returned">❌ Not Returned</span>
+            {% endif %}
+        </td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+<script>
+function filterIssues(type) {
+    document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
+    const activeBtn = document.querySelector(`.tab-button[onclick*="${type}"]`);
+    if (activeBtn) activeBtn.classList.add('active');
+
+    document.querySelectorAll('.issue-row').forEach(row => {
+        row.style.display =
+            type === 'all' || row.classList.contains(type) ? '' : 'none';
+    });
+}
+</script>
+
+
+{% endblock %}

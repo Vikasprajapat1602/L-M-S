@@ -1,0 +1,50 @@
+{% comment %} search baar daal rhe h...{% endcomment %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Library Management{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="slideshow-bg">  
+        <div class="overlay">   
+            <header>
+                <h1>Welcome to MyLibrary</h1>
+                <div class="navbar-container">
+                    <nav>
+                        <a href="{% url 'home' %}">Home</a>
+                        <a href="{% url 'books' %}">Books</a>
+                        <a href="{% url 'students' %}">Students</a>
+                        <a href="{% url 'issue-book' %}">Issue Book</a>
+                        <a href="{% url 'return-book' %}">Return Book</a>
+                        <a href="{% url 'issue-list' %}">Issued Books</a>
+                    </nav>
+                </div>
+            </header>
+
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="msg"> {{ message }}</div>
+                {% endfor %}
+            {% endif %}
+
+            <main>
+                {% block content %}
+                <div class="card">
+                    <h2>Welcome to Library Management System</h2>
+                    <p>Use the above navigation to manage books, students, and issued records.</p>
+                </div>
+                {% endblock %}
+            </main>
+
+            <footer>
+                <p>&copy; 2025 Library System. All rights reserved.</p>
+            </footer>
+
+        </div>
+    </div>
+</body>
+</html>

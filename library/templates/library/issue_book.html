@@ -1,0 +1,22 @@
+{% extends 'library/base.html' %}
+{% block title %}Issue Book{% endblock %}
+
+{% block content %}
+<div class="issue-container">
+    <div class="issue-card">
+        <h2 class="issue-title">Issue Book</h2>
+
+        <form method="post">
+            {% csrf_token %}
+
+            <label for="{{ form.book.id_for_label }}" class="form-label">Book:</label>
+            {{ form.book }}
+
+            <label for="{{ form.student.id_for_label }}" class="form-label">Student:</label>
+            {{ form.student }}
+
+            <button type="submit" class="submit-btn">Issue</button>
+        </form>
+    </div>
+</div>
+{% endblock %}
